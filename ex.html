@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 후 화면</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.layout-content-area {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.my-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-user {
+    display: flex;
+    align-items: center;
+}
+
+.user-thumb {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 50%;
+    position: relative;
+}
+
+.thumb-box.no-image {
+    background-color: #ddd;
+}
+
+.thumb-setting {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.user-desc {
+    margin-left: 15px;
+    flex-grow: 1;
+}
+
+.desc-info {
+    font-size: 14px;
+}
+
+.info-name {
+    font-weight: bold;
+    color: #333; /* 파란색 글씨를 기본 글씨 색으로 변경 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+.info-security {
+    color: #5a5a5a; 
+    text-decoration: none; 
+}
+.desc-email {
+    font-size: 12px;
+    color: #666;
+}
+
+.desc-new a {
+    margin-right: 10px;
+    color: #333; /* 파란색 글씨를 기본 글씨 색으로 변경 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.count {
+    color: red;
+}
+
+.btn-logout {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.my-menu {
+    margin-top: 20px;
+}
+
+.menu-area {
+    overflow-x: auto;
+}
+
+.menu-box {
+    display: flex;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-item {
+    margin-right: 20px;
+}
+
+.item-link {
+    text-decoration: none; /* 밑줄 제거 */
+    color: #333; /* 파란색 글씨를 기본 글씨 색으로 변경 */
+}
+
+.item-text {
+    font-size: 14px;
+}
+
+
+
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+}
+
+</style></head>
+<body>
+    <div id="account" class="layout-content-area">
+        <div class="my-info">
+          <div class="info-user">
+            <a href="https://nid.naver.com/user2/api/route?m=routePcProfileModification" target="_blank" class="user-thumb">
+              <span class="thumb-box no-image"></span>
+              <span class="thumb-setting">
+                <span class="blind">프로필 설정</span>
+              </span>
+            </a>
+            <div class="user-desc">
+              <div class="desc-info">
+                <a href="https://nid.naver.com/user2/api/route?m=routePcProfileModification" target="_blank" class="info-name">
+                  <span class="nickname">최윤아</span>님
+                </a>
+                <a target="_blank" class="info-security">네이버ID</a>
+                <a href="https://nid.naver.com/user2/help/myInfoV2?m=viewSecurity&lang=ko_KR" target="_blank" class="info-security-setting">
+                  <span class="blind">로그인 보호 설정</span>
+                </a>
+              </div>
+              <div class="desc-email">yunasooa@naver.com</div>
+              <div class="desc-new">
+                <a href="https://nid.naver.com/membership/join" target="_blank" class="ico-nplus2">
+                  <span class="blind">네이버 플러스 멤버십</span>
+                </a>
+                <a href="https://nid.naver.com/membership/join" target="_blank" class="link-new">시작하기</a>
+                <a href="https://note.naver.com/" target="_blank" class="link-new">쪽지</a>
+                <a href="https://happybean.naver.com/" target="_blank" class="link-new">
+                  <i class="ico-my-bean"></i>해피빈
+                </a>
+              </div>
+            </div>
+            <button type="button" class="btn-logout">로그아웃</button>
+          </div>
+        </div>
+      
+        <div class="my-menu">
+          <div class="menu-area">
+            <div class="menu-box">
+              <ul class="menu-list" role="tablist">
+                <li class="menu-item" role="presentation">
+                  <a href="#" class="item-link" role="tab" aria-selected="false">
+                    <span class="item-text">메일</span>
+                  </a>
+                </li>
+                <li class="menu-item" role="presentation">
+                  <a href="#" class="item-link" role="tab" aria-selected="false">
+                    <span class="item-text">카페</span>
+                  </a>
+                </li>
+                <li class="menu-item" role="presentation">
+                  <a href="#" class="item-link" role="tab" aria-selected="false">
+                    <span class="item-text">블로그</span>
+                  </a>
+                </li>
+                <li class="menu-item" role="presentation">
+                  <a href="#" class="item-link" role="tab" aria-selected="false">
+                    <span class="item-text">페이</span>
+                  </a>
+                </li>
+                <li class="menu-item" role="presentation">
+                  <a href="#" class="item-link" role="tab" aria-selected="false">
+                    <span class="item-text">MYBOX</span>
+                  </a>
+                </li>
+                <li class="menu-item" role="presentation">
+                  <a href="#" class="item-link" role="tab" aria-selected="false">
+                    <span class="item-text">포스트</span>
+                  </a>
+                </li>
+                <li class="menu-item setting-item" role="presentation">
+                  <a href="#" class="item-link" role="tab" aria-selected="false">
+                    <span class="item-text">설정</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      
+        <div class="layer-menu-service" style="display: none;">
+          <iframe id="my-iframe" title="my-iframe" src="/my.html" style="width: 100%; height: 384px;"></iframe>
+          <div class="service-list-scroll" style="display: none;">
+            <div class="setting-top">
+              <div class="setting-title">메뉴 순서를 변경해 보세요.</div>
+              <div class="setting-text">자주 사용하는 순서대로 아래 메뉴 버튼을 클릭하세요.</div>
+            </div>
+            <div class="setting-list-area">
+              <ul class="setting-list">
+                <li class="setting-item">
+                  <input type="checkbox" class="input-check blind" id="mail">
+                  <label class="label-item" for="mail">
+                    <span class="label-num"></span>
+                    <span class="label-text">메일</span>
+                  </label>
+                </li>
+                <li class="setting-item">
+                  <input type="checkbox" class="input-check blind" id="cafe">
+                  <label class="label-item" for="cafe">
+                    <span class="label-num"></span>
+                    <span class="label-text">카페</span>
+                  </label>
+                </li>
+                <li class="setting-item">
+                  <input type="checkbox" class="input-check blind" id="blog">
+                  <label class="label-item" for="blog">
+                    <span class="label-num"></span>
+                    <span class="label-text">블로그</span>
+                  </label>
+                </li>
+                <li class="setting-item">
+                  <input type="checkbox" class="input-check blind" id="pay">
+                  <label class="label-item" for="pay">
+                    <span class="label-num"></span>
+                    <span class="label-text">페이</span>
+                  </label>
+                </li>
+                <li class="setting-item">
+                  <input type="checkbox" class="input-check blind" id="mybox">
+                  <label class="label-item" for="mybox">
+                    <span class="label-num"></span>
+                    <span class="label-text">MYBOX</span>
+                  </label>
+                </li>
+                <li class="setting-item">
+                  <input type="checkbox" class="input-check blind" id="post">
+                  <label class="label-item" for="post">
+                    <span class="label-num"></span>
+                    <span class="label-text">포스트</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>

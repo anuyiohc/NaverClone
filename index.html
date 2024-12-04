@@ -1,0 +1,3131 @@
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="image/NaverFavicon.ico">
+    <title>NAVER-CLONE</title>
+<style>
+    :root {
+        --color_title: #080808;
+        --color_title_rgb: 8, 8, 8;
+        --color_body: #101010;
+        --color_body_rgb: 16, 16, 16;
+        --color_caption1: #404040;
+        --color_caption1_rgb: 64, 64, 64;
+        --color_caption2: #606060;
+        --color_caption2_rgb: 96, 96, 96;
+        --color_caption3: #555558;
+        --color_caption3_rgb: 85, 85, 88;
+        --color_search: #000;
+        --color_search_rgb: 0, 0, 0;
+        --color_border_out: #e3e5e8;
+        --color_border_out_rgb: 227, 229, 232;
+        --color_border_in: #ebebeb;
+        --color_border_in_rgb: 235, 235, 235;
+        --color_border_in_divider: #ebebeb;
+        --color_border_in_divider_rgb: 235, 235, 235;
+        --color_border_in_exception: #ebebeb;
+        --color_border_in_exception_rgb: 235, 235, 235;
+        --color_button_border: #dadcdf;
+        --color_button_border_rgb: 218, 220, 223;
+        --color_dot_divider: #d3d5d7;
+        --color_dot_divider_rgb: 211, 213, 215;
+        --color_block_bg: #fff;
+        --color_block_bg_rgb: 255, 255, 255;
+        --color_board_bg: #f4f6fa;
+        --color_board_bg_rgb: 244, 246, 250;
+        --color_option_bg: #f5f7f8;
+        --color_option_bg_rgb: 245, 247, 248;
+        --color_login_bg: #fafbfb;
+        --color_login_bg_rgb: 250, 251, 251;
+        --color_menu_widget_bg: #fff;
+        --color_menu_widget_bg_rgb: 255, 255, 255;
+        --color_setting_bg: #fff;
+        --color_setting_bg_rgb: 255, 255, 255;
+        --color_button1_bg: #fff;
+        --color_button1_bg_rgb: 255, 255, 255;
+        --color_button2_bg: #fff;
+        --color_button2_bg_rgb: 255, 255, 255;
+        --color_news: #3a67ea;
+        --color_news_rgb: 58, 103, 234;
+        --color_news_econ_stay: #909aab;
+        --color_news_econ_stay_rgb: 144, 154, 171;
+        --color_news_econ_down: #4f67d6;
+        --color_news_econ_down_rgb: 79, 103, 214;
+        --color_live_news_price: #f4361e;
+        --color_live_news_price_rgb: 244, 54, 30;
+        --color_enter: #e538e2;
+        --color_enter_rgb: 229, 56, 226;
+        --color_enter_bg: #f2f1fb;
+        --color_enter_bg_rgb: 242, 241, 251;
+        --color_sports: #1f65ef;
+        --color_sports_rgb: 31, 101, 239;
+        --color_sports_bg: #f4f7fe;
+        --color_sports_bg_rgb: 244, 247, 254;
+        --color_econ: #008f76;
+        --color_econ_rgb: 0, 143, 118;
+        --color_calendar: #eb5b5b;
+        --color_calendar_rgb: 235, 91, 91;
+        --color_dic: #031f5f;
+        --color_dic_rgb: 3, 31, 95;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 10.5px;
+        line-height: 10.5px;
+        letter-spacing: -0.4px;
+        font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
+    }
+
+    form,
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    aside[id$=ad] {
+        margin-bottom: 16px;
+        border-radius: 8px;
+    }
+
+    section[id^=main] {
+        margin-bottom: 16px;
+        box-shadow: 0 0 0 1px #e3e5e8, 0 1px 2px 0 rgba(0, 0, 0, .04);
+        border-radius: 8px;
+    }
+
+    a,
+    a:hover,
+    a:visited {
+        color: inherit;
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .blind {
+        clip: rect(0 0 0 0);
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .pipe::before {
+        content: "";
+        display: inline-block;
+        margin: 0 16px;
+        width: 1px;
+        height: 12px;
+        vertical-align: -1px;
+        background-color: var(--color_dot_divider);
+    }
+
+    .dot::before {
+        content: " ";
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        background-color: var(--color_dot_divider);
+        margin: 9px 7px 0;
+        border-radius: 50%;
+        vertical-align: top;
+    }
+
+    .slash::before {
+        content: " ";
+        display: inline-block;
+        position: absolute;
+        top: 4px;
+        left: 13px;
+        width: 1px;
+        height: 15px;
+        background-color: var(--color_dot_divider);
+        transform: skewX(-15deg);
+    }
+
+    #wrap {
+        min-width: 1340px;
+        text-align: center;
+    }
+
+    #header {
+        position: relative;
+        margin: 0 auto;
+        padding: 70px 0 22px;
+        width: 1280px;
+        height: 268px;
+        text-align: left;
+    }
+
+    #main {
+        margin: 0 auto;
+        width: 1280px;
+    }
+
+    #footer {
+        width: 100%;
+        background-color: #f5f6f7;
+        text-align: left;
+    }
+
+    #header .header-button {
+        display: block;
+        position: absolute;
+        top: 18px;
+        border: none;
+        width: 36px;
+        height: 36px;
+        padding: 10px;
+        background: none;
+        cursor: pointer;
+    }
+
+    #header .header-button:hover::before {
+        position: absolute;
+        content: '';
+        z-index: 0;
+        left: 1px;
+        top: 1px;
+        width: 44px;
+        height: 44px;
+        background-color: var(--color_option_bg);
+        border-radius: 50%;
+    }
+
+    .header-button>div {
+        position: relative;
+        width: 26px;
+        height: 26px;
+        z-index: 1;
+        background-image: url(./favicon.ico);
+        background-repeat: no-repeat;
+        background-size: 434px 414px;
+    }
+
+    #header-Hamburger {
+        left: -10px;
+    }
+
+    #header-pay {
+        left: 43px;
+    }
+
+
+    #header-navertalk {
+        right: 100px;
+    }
+
+    #header-notice {
+        right: 50px;
+    }
+
+    #header-basket {
+        right: 0px;
+    }
+
+
+    #header-Hamburger>div {
+        background-position: -82px -329px;
+    }
+
+    #header-navertalk>div {
+        background-position: -190px -329px;
+    }
+
+    #header-notice>div {
+        background-position: -136px -329px;
+    }
+    
+    #header-basket>div {
+        background-image: url(image/sp_main.png);
+        background-position: -33px -299px;
+        }
+
+    #header-pay>div {
+        background-position: -295px -177px;
+        width: 33px;
+        height: 33px;
+        left: -3px;
+        top: -3px;
+    }
+
+    #header-right-ad {
+        display: block;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 244px;
+        height: 108px;
+    }
+
+    #search {
+        position: absolute;
+        top: 70px;
+        left: 287px;
+        width: 706px;
+        border: 1px solid #03c75a;
+        border-radius: 33px;
+        background-color: #fff;
+        z-index: 1;
+    }
+
+    #search:hover {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12);
+    }
+
+    #search>form {
+        display: inline-flex;
+        width: 706px;
+        height: 58px;
+    }
+
+    #search>form>input {
+        width: 480px;
+        border: none;
+        outline: none;
+        font-size: 21px;
+        line-height: 24px;
+        text-align: left;
+        padding: 17px 0px;
+    }
+
+    #search>form svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    #search-svg {
+        position: relative;
+        display: block;
+        width: 68px;
+        height: 58px;
+        padding: 17px 16px 17px 27px;
+    }
+
+
+    #search-svg svg {
+        fill: #03c75a;
+    }
+
+    #search-input::placeholder {
+        position: relative;
+        top: 1.5px;
+        color: rgba(0, 0, 0, 0);
+    }
+
+    #search-input:focus::placeholder {
+        color: #e4e4e4;
+    }
+
+
+    #search-right {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    #search-keyboard,
+    #search-resent,
+    #search-button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    #search-keyboard::before,
+    #search-resent::before,
+    #search-button>div::before {
+        content: "";
+        display: block;
+        background-image: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-repeat: no-repeat;
+    }
+
+    #search-keyboard::before {
+        background-position: -226px -254px;
+        width: 24px;
+        height: 14px;
+    }
+
+    #search-keyboard:hover::before {
+        filter: brightness(0.7);
+    }
+
+    #search-resent::before {
+        background-position: -133px -201px;
+        width: 10px;
+        height: 6px;
+    }
+
+    #search-button {
+        padding: 17px 27px 16px 10px;
+    }
+
+    #search-button>div {
+        width: 25px;
+        height: 25px;
+    }
+
+    #search-button>div::before {
+        background-position: -295px -329px;
+        width: 25px;
+        height: 25px;
+    }
+
+    #nav {
+        position: absolute;
+        top: 70px;
+        left: 8px;
+        margin: 72px 302px 0;
+    }
+
+    #nav>ul {
+        display: flex;
+        list-style-type: none;
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+
+    #nav li {
+        width: 64px;
+        margin-left: 4px;
+    }
+
+    #nav a {
+        text-align: center;
+    }
+
+    #nav .icon {
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+    }
+
+    #nav .icon::before,
+    #nav .icon::after {
+        content: " ";
+        position: absolute;
+        background-image: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-repeat: no-repeat;
+    }
+
+    /*버튼모양 */
+    #nav li .icon::before {
+        top: -2px;
+        left: -3px;
+        width: 54px;
+        height: 54px;
+        background-position: 0px -128px;
+    }
+
+    #nav .icon::after {
+        width: 44px;
+        height: 44px;
+        margin: 2px;
+        position: relative;
+        z-index: 1;
+    }
+
+
+    #nav li .icon:hover {
+        position: relative;
+        box-shadow: 0 2px 3px 2px;
+        border-radius: 17px;
+        color: #e3e5e8;
+    }
+
+    #nav li:nth-of-type(10) .icon {
+        box-shadow: none;
+    }
+
+    #nav li:nth-of-type(1) {
+        margin-left: 0px;
+    }
+
+    #nav li:nth-of-type(1) .icon::after {
+        background-position: -250px -90px;
+    }
+
+    #nav li:nth-of-type(2) .icon::after {
+        background-position: -250px 0px;
+    }
+
+    #nav li:nth-of-type(3) .icon::after {
+        background-position: -201px -98px;
+    }
+
+    #nav li:nth-of-type(4) .icon::after {
+        background-position: -90px -209px;
+    }
+
+    #nav li:nth-of-type(5) .icon::after {
+        background-position: 0px -209px;
+    }
+
+    #nav li:nth-of-type(6) .icon::after {
+        background-position: -180px -209px;
+    }
+
+    #nav li:nth-of-type(7) .icon::after {
+        background-position: -45px -209px;
+    }
+
+    #nav li:nth-of-type(8) .icon::after {
+        background-position: -201px 0px;
+        margin: 0px;
+        width: 48px;
+        height: 48px;
+    }
+
+    #nav li:nth-of-type(9) .icon::after {
+        background-position: -225px -209px;
+    }
+
+    #nav li:nth-of-type(10) .icon::after {
+        background-position: -250px -135px;
+    }
+
+    #nav li:nth-of-type(10) .icon:hover::before {
+        content: " ";
+        border-radius: 17px;
+        background-position: 0px -69px;
+        background-repeat: no-repeat;
+        width: 58px;
+        height: 58px;
+    }
+
+    #nav li:nth-of-type(10) .icon:hover::after {
+        content: " ";
+        background-size: 434px 414px;
+        background-position: -110px -201px;
+        background-repeat: no-repeat;
+        margin: 21px 13.1px;
+        width: 22px;
+        height: 6px;
+    }
+
+    #nav li a span {
+        display: inline-block;
+        text-align: center;
+        margin-top: 7px;
+        margin-left: 10px;
+        line-height: 20px;
+        color: #101010;
+    }
+
+    #nav li:nth-of-type(3) a span,
+    #nav li:nth-of-type(7) a span {
+        margin-left: 2.6px;
+    }
+
+    #main-middle {
+        display: flex;
+        position: relative;
+        padding-bottom: 60px;
+    }
+
+    #main-left {
+        width: 830px;
+        margin-right: 30px;
+    }
+
+
+
+    #main-newsstand-gray,
+    #main-shopping-gray{
+        display: flex;
+        justify-content: flex-start;
+        height: 50px;
+        border-radius: 4px;
+        font-size: 1.4rem;
+    }
+
+    #main-newsstand-gray,
+    #main-shopping-gray.left{
+        background-color: var(--color_option_bg);
+    }
+
+    #main-newsstand-gray .left,
+    #main-shopping-gray .left {
+        display: flex;
+        flex: 1;
+    }
+
+    #main-newsstand header,
+    #main-shopping header {
+        padding: 18px 20px 17px;
+    }
+
+
+    #main-newsstand-top header a,
+    #main-shopping-top header a{
+        color: rgba(8, 8, 8, .5);
+    }
+
+
+    #main-newsstand-top header .bold,
+    #main-shopping-top header .bold{
+        color: var(--color_title);
+    }
+
+
+    #main-newsstand-gray a,
+    #main-shopping-gray a{
+        color: var(--color_body);
+    }
+
+
+    .left-section {
+        display: flex;
+        flex-flow: column;
+    }
+
+    /*뉴스탠드 , 쇼핑, 동물*/
+    .left-section header {
+        display: flex;
+        flex: 1;
+        justify-content: left;
+        font-size: 1.6rem;
+        font-weight: 800;
+        line-height: 23px;
+        height: 58px;
+    }
+
+    .left-section header .slash {
+        position: relative;
+        padding-left: 26px;
+    }
+
+
+    .left-section footer {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0 11px;
+        color: var(--color_caption2);
+        font-size: 1.3rem;
+        font-weight: 600;
+        line-height: 35px;
+        border-top: 1px solid var(--color_border_in);
+    }
+
+    .left-section footer .list-button,
+    .left-section footer .grid-button {
+        position: absolute;
+        border: none;
+        cursor: pointer;
+        top: 0;
+        background-color: transparent;
+    }
+
+    .left-section footer .list-button {
+        right: 40px;
+        padding: 18px 9px 18px 20px;
+    }
+
+    .left-section footer .list-button::before {
+        content: "";
+        display: inline-block;
+        background: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-position: -257px -356px;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+
+    }
+
+    .left-section footer .list-button:hover::before {
+        background-position: -236px -356px;
+    }
+
+    .left-section footer .grid-button {
+        right: 0px;
+        padding: 18px 20px 18px 9px;
+    }
+
+    .left-section footer .grid-button::before {
+        content: "";
+        display: inline-block;
+        background: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-position: -389px -126px;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+    }
+
+    .left-section footer .way {
+        display: flex;
+        position: relative;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        background-color: var(--color_button1_bg);
+        border: 1px solid var(--color_button_border);
+        border-radius: 50%;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .06);
+    }
+
+    .left-section footer .prev::before,
+    .left-section footer .next::before {
+        content: " ";
+        position: relative;
+        display: flex;
+        background-image: url(./favicon.ico);
+        background-size: 433px 412px;
+        background-position: -168px -400px;
+        background-repeat: no-repeat;
+        width: 6px;
+        height: 12px;
+        justify-content: space-evenly;
+        align-items: center;
+
+    }
+
+    .left-section footer .prev::before {
+        transform: rotate(180deg);
+    }
+
+    .left-section footer .way:hover {
+        background-color: #fbfbfc;
+    }
+
+    .left-section footer .text {
+        padding: 0 16px;
+        min-width: 156px;
+    }
+
+    .left-section footer .last {
+        color: rgba(96, 96, 96, .5);
+    }
+
+    .left-section footer .hot {
+        color: #9858F5
+    }
+
+    #main-newsstand-top .red {
+        background-color: var(--color_live_news_price);
+        display: inline-block;
+        margin-top: 3px;
+        padding: 0 5px 0 4px;
+        border-radius: 9px;
+        font-size: 1.1rem;
+        line-height: 18px;
+        font-weight: 900;
+        vertical-align: top;
+        color: #fff;
+    }
+
+    
+    #main-shopping-gray .page .first,
+    #main-shopping-gray .page .last {
+        font-size: 1.3rem;
+        line-height: 16px;
+        font-weight: 600;
+        vertical-align: middle;
+    }
+
+    #main-shopping-gray .page .last {
+        color: rgba(113, 113, 113, .6);
+    }
+
+    #main-shopping-gray .page button {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid rgba(211, 213, 215, .8);
+        border-radius: 4px;
+        background-color: #fbfbfc;
+    }
+
+    #main-shopping-gray .page button::before {
+        content: "";
+        position: absolute;
+        padding: 0px;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        border-left: 2px solid #80868c;
+        border-bottom: 2px solid #80868c;
+    }
+
+    #main-shopping-gray .page .prev::before {
+        margin-left: 1px;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+
+    #main-shopping-gray .page .next::before {
+        margin-left: -1px;
+        transform: translate(-50%, -50%) rotate(-135deg);
+    }
+
+    #main-newsstand {
+        height: 426px;
+    }
+
+    #main-newsstand-gray {
+        padding: 12px 20px;
+        line-height: 26px;
+        margin: 0 20px;
+    }
+
+    /* 전체언론사 */
+    #main-newsstand-gray .left>a {
+        width: 86px;
+        color: var(--color_caption1);
+    }
+
+    /* 화살표 */
+    #main-newsstand-gray .left>a::after {
+        content: " ";
+        background: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-position: -154px -201px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        height: 6px;
+        width: 9px;
+        margin: 10px 0 0 5px;
+        vertical-align: top;
+    }
+
+    #main-newsstand-animation {
+        padding-left: 25px;
+        position: relative;
+        display: flex;
+    }
+
+    /* 전체언론사 뒤 회색바 */
+    #main-newsstand-animation::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 7px;
+        left: 12px;
+        background-color: var(--color_dot_divider);
+        width: 1px;
+        height: 12px;
+    }
+
+    /* 연합뉴스 */
+    #main-newsstand-animation a:first-of-type {
+        position: relative;
+        top: -1px;
+        line-height: 26px;
+    }
+
+    /* 회색점 */
+    #main-newsstand-animation a:first-of-type::after {
+        content: " ";
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        background-color: var(--color_dot_divider);
+        margin: 12px 6px 0 6px;
+        border-radius: 50%;
+        vertical-align: 5px;
+    }
+
+    /*뉴스 제목*/
+    #main-newsstand-animation a:last-of-type {
+        text-overflow: ellipsis;
+        width: 400px;
+        white-space: nowrap;
+        display: inline-block;
+        overflow: hidden;
+        text-align: start;
+    }
+
+
+    #main-newsstand-gray .right {
+        display: flex;
+    }
+
+    #main-newsstand-gray a.bold {
+        padding-left: 25px;
+        position: relative;
+        display: inline-block;
+    }
+
+    #main-newsstand-gray a.bold::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 7px;
+        left: 12px;
+        background-color: var(--color_dot_divider);
+        width: 1px;
+        height: 12px;
+    }
+
+    #main-newsstand-grid {
+        display: grid;
+        position: relative;
+        gap: 1px;
+        grid-template: repeat(4, 55px) / repeat(6, 1fr);
+        background-color: var(--color_border_in);
+        border: 1px solid var(--color_border_in);
+        border-radius: 4px;
+        margin: 18px 20px;
+        height: 225px;
+        width: 790px;
+    }
+
+    #main-newsstand-grid .grid-box {
+        position: relative;
+        padding: 18px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+    }
+
+    #main-newsstand-grid .grid-box img {
+        position: absolute;
+        width: 55px;
+        height: 20px;
+    }
+
+    #main-newsstand-grid .grid-box:hover img {
+        display: none;
+    }
+
+    #main-newsstand-grid .grid-box .hover-box,
+    #main-newsstand-grid .grid-box .hover-box a {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    #main-newsstand-grid .grid-box:hover {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #main-newsstand-grid .grid-box:hover .hover-box {
+        position: absolute;
+        display: flex;
+        width: 130.5px;
+        height: 55px;
+        align-items: center;
+        justify-content: center;
+        background-color: #2868f2;
+        border-radius: 4px;
+    }
+
+    #main-newsstand-grid .grid-box:hover .hover-box a {
+        font-size: 1.3rem;
+        line-height: 30px;
+        font-weight: 400;
+        color: #fff;
+    }
+
+    #main-newsstand-grid .grid-box:hover .hover-box a:hover {
+        font-weight: bold;
+    }
+
+    #main-newsstand-grid .hover-box .pipe::before {
+        background-color: transparent;
+    }
+
+    #main-newsstand-grid .grid-box:hover .pipe::before {
+        margin: 0 8px;
+        background-color: var(--color_dot_divider);
+    }
+
+    #main-newsstand footer .news {
+        color: var(--color_news);
+    }
+
+    #main-newsstand footer .first {
+        color: var(--color_caption2);
+    }
+
+
+    #main-shopping {
+        height: 560px;
+    }
+
+    #main-shopping footer .text {
+        min-width: 176px;
+    }
+
+    #main-shopping-gray {
+        margin: 0 20px;
+    }
+
+
+    #main-shopping-gray .left {
+        background-color: var(--color_option_bg);
+        display: flex;
+        width: 668px;
+        line-height: 21px;
+        padding: 15px 20px 14px;
+    }
+
+    #main-shopping-gray .today {
+        flex: none;
+        position: relative;
+        padding-right: 19px;
+        font-weight: 700;
+    }
+
+    /*패션플러스  */
+    #main-shopping-gray .pas {
+        display: inline-block;
+        height: 17px;
+        padding-top: 4px;
+        line-height: 13px;
+        vertical-align: top;
+    }
+
+    #main-shopping-gray a>span {
+        color: #9858f5;
+    }
+
+    #main-shopping-gray a {
+        margin-left: 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--color_caption1);
+    }
+
+    #main-shopping-gray .page {
+        display: inline-block;
+        background-color: transparent;
+        margin-left: 25px;
+        padding: 10px 0;
+    }
+
+
+    #main-shopping-gray .way:hover {
+        background-color: #fbfbfc;
+    }
+
+    #main-shopping-gray .way:hover::before {
+        border-color: #2a2c2f;
+    }
+
+
+    #main-shopping-grid {
+        padding: 18px 20px 1px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template: 88px 86px 196px / repeat(5, 98px) 260px;
+        column-gap: 8px;
+        height: 394px;
+        width: 830px;
+    }
+
+    #main-shopping-grid .item {
+        font-size: 1.3rem;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: -.4px;
+        overflow: hidden;
+        white-space: nowrap;
+        color: var(--color_body);
+    }
+
+    #main-shopping-grid .text {
+        text-align: left;
+        width: 98px;
+        height: 19px;
+    }
+
+    #main-shopping-grid .img-board,
+    #main-shopping-grid img {
+        width: 98px;
+        height: 126px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        overflow: hidden;
+    }
+
+    #main-shopping-grid img:hover {
+        transition: transform .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transform: scale(1.05);
+        overflow: hidden;
+    }
+
+    #main-shopping-grid .item:nth-child(1),
+    #main-shopping-grid .item:nth-child(3),
+    #main-shopping-grid .item:nth-child(5),
+    #main-shopping-grid .item:nth-child(7),
+    #main-shopping-grid .item:nth-child(9) {
+        grid-row: 1 / span 2;
+        padding-bottom: 14px;
+    }
+
+    #main-shopping-grid .item:nth-child(2),
+    #main-shopping-grid .item:nth-child(4),
+    #main-shopping-grid .item:nth-child(6),
+    #main-shopping-grid .item:nth-child(8),
+    #main-shopping-grid .item:nth-child(10) {
+        padding-bottom: 24px;
+    }
+
+    #main-shopping-grid .item:nth-child(11),
+    #main-shopping-grid .item:nth-child(12),
+    #main-shopping-grid .item:nth-child(13)>div {
+        width: 248px;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, .05);
+        background: rgba(245, 248, 251, .6);
+        margin-left: 12px;
+    }
+
+    #main-shopping-grid .item:nth-child(12),
+    #main-shopping-grid .item:nth-child(13)>div {
+        margin-top: 12px;
+    }
+
+    #main-shopping-grid .item:nth-child(13) div,
+    #main-shopping-grid .item:nth-child(13) img {
+        width: 248px;
+        height: 146px;
+        margin-bottom: 10px;
+    }
+
+    #main-shopping-grid .item:nth-child(13) img:hover {
+        transition: none;
+        transform: none;
+    }
+
+    #main-shopping-grid .item:nth-child(11) .item-block {
+        height: 88px;
+        position: relative;
+        padding: 9px 12px 4px;
+        border-radius: 4px;
+        background: rgba(245, 248, 251, .6);
+    }
+
+    #main-shopping-grid .item-block .shopping-name {
+        position: relative;
+        display: flex;
+        width: 224px;
+        height: 25px;
+        justify-content: space-between;
+        padding-bottom: 5px;
+        font-size: 14px;
+    }
+
+
+    #main-shopping-grid .shopping-name .dot::before {
+        width: 3px;
+        height: 3px;
+        margin: 7px 0;
+    }
+
+    #main-shopping-grid .item:nth-child(12) {
+        height: 73.78px;
+        padding: 9px;
+    }
+
+    #main-shopping-grid .item:nth-child(12) ul {
+        list-style: none;
+        position: relative;
+        display: flex;
+    }
+
+    #main-shopping-grid .item li a {
+        display: block;
+        text-align: center;
+        width: 57.5px;
+        height: 55.6px;
+    }
+
+    #main-shopping-grid .item-border {
+        width: 32px;
+        height: 32px;
+        position: relative;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: #fff;
+        line-height: 32px;
+        text-align: center;
+        vertical-align: top;
+        border: 1px solid rgba(238, 242, 248, .8);
+    }
+
+    #main-shopping-grid .item-border::before {
+        content: "";
+        display: block;
+        position: relative;
+        left: -5%;
+        width: 32px;
+        height: 32px;
+        background-image: url(image/shopping-icon.png);
+        background-size: 132px 126px;
+        background-repeat: no-repeat;
+    }
+
+    #main-shopping-grid li:nth-child(1) .item-border::before {
+        background-position: -34px 0;
+    }
+
+    #main-shopping-grid li:nth-child(2) .item-border::before {
+        background-position: -68px -34px;
+    }
+
+    #main-shopping-grid li:nth-child(3) .item-border::before {
+        background-position: -34px -34px;
+    }
+
+    #main-shopping-grid li:nth-child(4) .item-border::before {
+        top: 8px;
+        left: 6px;
+        width: 17px;
+        height: 16px;
+        background-position: -19px -96px;
+    }
+
+    #main-shopping-grid .item-text {
+        color: var(--color_caption1);
+        margin-top: 2px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    #main-shopping footer .footer-ad {
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        border: 1px solid var(--color_border_out);
+        color: var(--color_caption2);
+        width: 30px;
+        border-radius: 4px;
+        font-size: 1.2rem;
+        line-height: 18px;
+        text-align: center;
+    }
+
+    #main-right {
+        width: 420px;
+        box-shadow: none;
+    }
+
+    #main-login {
+        height: 163.78px;
+        padding: 21px 20px 18px;
+        font-size: 1.4rem;
+        display: flex;
+        flex-flow: column;
+    }
+
+    #main-login .text {
+        line-height: 20px;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    #main-login-button {
+        margin-top: 13px;
+        padding: 17px 0;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, .06);
+        box-shadow: 0 2px 4px 0 rgba(3, 199, 90, .12);
+        background-color: #03c75a;
+        color: white;
+        text-decoration: none;
+    }
+
+    #main-login-button:hover {
+        background-color: #17b75e;
+        box-shadow: 0 2px 4px 0 rgba(3, 199, 90, .24);
+    }
+
+    #main-login-button i {
+        background-image: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-position: -120px -166px;
+        background-repeat: no-repeat;
+        width: 72px;
+        height: 15px;
+        margin: 3px 8px 0 0;
+        display: inline-block;
+    }
+
+    #main-login-button span {
+        position: relative;
+        top: -2px
+    }
+
+    #main-login>div:last-of-type {
+        font-size: 1.3rem;
+        line-height: 20px;
+        height: 20px;
+        text-align: center;
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #main-login>rch-a div:last-of-type a {
+        color: var(--color_caption2);
+        letter-spacing: -0.4px;
+    }
+
+
+    #main-login .pipe::before {
+        content: " ";
+        margin: 4px 12px 0;
+    }
+
+
+
+    /*날씨 , 증시*/
+    .main-weather-and-stock {
+        height: 236px;
+        padding: 0 18px
+    }
+
+    .main-weather-and-stock header {
+        height: 52px;
+        line-height: 40px;
+        padding: 6px 0;
+        display: flex;
+    }
+
+    .main-weather-and-stock header>span {
+        margin-left: auto;
+        font-size: 1.3rem;
+    }
+
+    .main-weather-and-stock header>text {
+        color: var(--color_title);
+        display: inline-block;
+        padding-right: 7px;
+        font-size: 1.5rem;
+        font-weight: 800;
+        vertical-align: top;
+    }
+
+    #main-weather-content,
+    #main-stock-content {
+        border-top: 1px solid var(--color_border_in);
+        width: 384px;
+        height: 184px;
+        position: relative;
+        display: flex;
+    }
+
+    #main-weather-left,
+    #main-stock-left {
+        width: 180px;
+        position: relative;
+        display: flex;
+        flex: 1;
+    }
+
+    #main-weather-right,
+    #main-stock-right {
+        width: 180px;
+    }
+
+    #main-weather {
+        height: 236px;
+    }
+
+    #main-weather button {
+        border: 1px solid var(--color_border_in_divider);
+        background-color: var(--color_button1_bg);
+        border-radius: 15px;
+        color: var(--color_caption2);
+        display: inline-block;
+        line-height: 25px;
+        font-size: 1.1rem;
+        min-width: 75px;
+        margin-top: 7px;
+        height: 26px;
+        padding: 0 10px 0 7px;
+    }
+
+    #main-weather button:hover {
+        background-color: #f8f8f8;
+        color: #404040;
+    }
+
+    #main-weather button>a {
+        display: flex;
+    }
+
+    #main-weather button ::before {
+        content: "";
+        display: inline-block;
+        background-image: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-position: -130px -402px;
+        background-repeat: no-repeat;
+        width: 12px;
+        height: 12px;
+        margin: 6px 2px 0 0;
+    }
+
+
+    #main-weather button:hover ::before {
+        background-image: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-position: -117px -402px;
+        background-repeat: no-repeat;
+    }
+
+    #main-weather-left {
+        margin: 20px 0 18px;
+        flex-flow: column;
+    }
+
+    #main-weather-left>a {
+        display: block;
+        height: 118px;
+    }
+
+    #main-weather-left a:hover {
+        text-decoration: none;
+    }
+
+    #main-weather-left .sketch-border {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1px;
+        width: 180px;
+    }
+
+
+    /* 날씨그림 */
+    #main-weather-left .sketch {
+        width: 86px;
+        height: 86px;
+        margin-right: 4px;
+    }
+
+    #main-weather-left .sketch::before {
+        content: "";
+        display: block;
+        background-image: url(./weather-picture.ico);
+        background-size: 641px 587px;
+        background-position: 0px -174px;
+        background-repeat: no-repeat;
+        width: 86px;
+        height: 86px;
+    }
+
+
+
+    #main-weather-left .sketch-right {
+        font-size: 3.9rem;
+        line-height: 48px;
+        height: 68px;
+        letter-spacing: -2px;
+        color: #101010;
+    }
+
+    /* 흐림 */
+    #main-weather-left .sketch-right-bottom {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: left;
+        white-space: nowrap;
+        padding-left: 5px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        line-height: 20px;
+        letter-spacing: -0.3px;
+    }
+
+    /* 최저기온, 최고온도 */
+    #main-weather-left .sketch-base {
+        margin-top: 16px;
+        line-height: 16px;
+        font-size: 14.7px;
+    }
+
+    /* -2° (최저기온)*/
+    #main-weather-left .sketch-base :nth-child(1) {
+        color: #3172e7;
+    }
+
+    /* 3° (최고기온)*/
+    #main-weather-left .sketch-base :nth-child(2) {
+        color: #cd3534;
+    }
+
+
+    #main-weather-left .slash::before {
+        content: "";
+        position: static;
+        margin: 0 5px 0 -2px;
+        height: 11px;
+        vertical-align: -1px;
+    }
+
+    #main-weather-left .dust {
+        display: flex;
+        justify-content: center;
+        margin-top: 6px;
+        line-height: 20px;
+        width: 180px;
+        height: 20px;
+    }
+
+    /*미세먼지 ,초미세 먼지*/
+    #main-weather-left .pollution,
+    #main-weather-left .ultra-pollution {
+        color: #101010;
+    }
+
+    #main-weather-left .pollution,
+    #main-weather-left .ultra-pollution {
+        display: inline-block;
+        font-size: 13.65px;
+        text-align: center;
+    }
+
+    #main-weather-left .dot::before {
+        content: "";
+        margin: 8px 6px 0;
+        border-radius: 50%;
+    }
+
+    /* 좋음 */
+    #main-weather-left .pollution span,
+    #main-weather-left .ultra-pollution span {
+        color: #32a1ff;
+        padding-left: 4px
+    }
+
+
+    #main-weather-right {
+        position: relative;
+        display: block;
+        margin: 20px 0 18px 24px;
+        width: 180px;
+    }
+
+    #main-weather-right img {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: -3.2px;
+        width: 180px;
+        height: 146.5px;
+        background-size: 103% 100%;
+        background-repeat: no-repeat;
+    }
+
+    #main-stock {
+        height: 236px;
+    }
+
+    /* 새로고침 */
+    #main-stock button {
+        display: inline-block;
+        padding: 12px 0 12px 5px;
+        background-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
+        border: 0;
+    }
+
+
+    #main-stock button::before,
+    #main-stock button:hover::before {
+        content: "";
+        display: block;
+        background-image: url(./favicon.ico);
+        background-size: 434px 414px;
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+    }
+
+    #main-stock button::before {
+        background-position: -141px -381px;
+    }
+
+    #main-stock button:hover::before {
+        background-position: -124px -381px;
+    }
+
+
+    #main-stock-left {
+        padding-top: 6px;
+        margin: 9px 0 14px;
+        display: flex;
+        height: 155px;
+        text-align: left;
+    }
+
+    #main-stock-left a:hover {
+        text-decoration: none;
+    }
+
+    #main-stock-left .USD,
+    #main-stock-left .rate {
+        color: #101010;
+    }
+
+    #main-stock-left .USD {
+        font-size: 15px;
+        height: 19px;
+    }
+
+    #main-stock-left .rate {
+        font-size: 24px;
+        margin-top: 3px;
+        line-height: 30px;
+    }
+
+    #main-stock-left .up {
+        color: #f44336;
+        font-size: 14px;
+        margin: 2px 0 0;
+        height: 17px;
+        text-align: left;
+    }
+
+    #main-stock-left .up span {
+        padding-left: 6px;
+    }
+
+    #main-stock-left .chart {
+        height: 44px;
+    }
+
+    #main-stock-left .three {
+        color: #606060;
+        position: relative;
+        top: 10px;
+        font-size: 13.65px;
+        margin-top: 11px;
+        line-height: 17px;
+    }
+
+    #main-stock-right {
+        margin: 9px 0 14px 25px;
+        width: 179.5px;
+        height: 160px;
+    }
+
+    #main-stock-right ul {
+        list-style: none;
+    }
+
+    #main-stock-right li {
+        white-space: nowrap;
+        width: 179.5px;
+        height: 38px;
+        border-bottom: 1px solid var(--color_border_in);
+    }
+
+    #main-stock-right a {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0 9px;
+        line-height: 21px;
+    }
+
+    #main-stock-right .stock-block {
+        height: 36px;
+        padding: 6px 0 9px;
+        line-height: 21px;
+    }
+
+    #main-stock-right span {
+        font-size: 14.7px;
+        color: #101010;
+    }
+
+    #main-stock-right .stock-item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 78px;
+    }
+
+    /*화살표 */
+    #main-stock-right .stock-item .arrow {
+        overflow: visible;
+        color: #606060;
+    }
+
+    #main-stock-right .stock-item .arrow::after {
+        content: " ";
+        display: inline-block;
+        background-image: url(image/favicon.png);
+        background-size: 433px 412px;
+        background-position: -201px -400px;
+        background-repeat: no-repeat;
+        margin-left: 65px;
+        width: 10px;
+        height: 12px;
+    }
+
+    #main-stock-right .price {
+        display: flex;
+        justify-content: flex-end;
+        width: 61.97px;
+    }
+
+    #main-stock-right .price i {
+        background-image: url(./favicon.ico);
+        background-size: 433px 412px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        width: 9px;
+        height: 6px;
+        margin: 8px 4px 0 0;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    #main-stock-right .up i {
+        background-position: -174px -201px;
+    }
+
+    #main-stock-right .down i {
+        background-position: -164px -201px;
+    }
+
+    #VIBE-content {
+        width: 366px;
+        height: 210px;
+        margin: 13px 0 18px 18px
+    }
+
+    #VIBE-content ul {
+        display: flex;
+        overflow: hidden;
+    }
+
+    #VIBE-content li {
+        list-style: none;
+        position: relative;
+        width: 108px;
+        height: 210px;
+        margin-left: 12px;
+    }
+
+    #VIBE-content li:nth-of-type(1) {
+        margin-left: 0px;
+    }
+
+    #VIBE-content li>a {
+        position: relative;
+        display: block;
+        width: 108px;
+        height: 162px;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    #VIBE-content li img {
+        width: 108px;
+        height: 162px;
+        background-size: 108px 162px;
+        background-repeat: no-repeat;
+    }
+
+    #VIBE-content img:hover {
+        transition: transform .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transform: scale(1.06);
+        overflow: hidden;
+    }
+
+    #VIBE-content i {
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+    #VIBE-content i::before {
+        content: "";
+        display: block;
+        position: absolute;
+        background-image: url(image/favicon.png);
+        background-size: 433px 412px;
+        background-position: -425px -112px;
+        background-repeat: no-repeat;
+        width: 7px;
+        height: 10px;
+        margin: 9px 10.5px;
+    }
+
+
+    #VIBE-content a i::after {
+        content: "";
+        display: block;
+        position: absolute;
+        border: 1px solid rgba(0, 0, 0, .04);
+        border-radius: inherit;
+    }
+
+    #VIBE-content a:nth-of-type(2) span {
+        display: -webkit-box;
+        overflow: hidden;
+        width: 108px;
+        height: 40px;
+        font-size: 14.7px;
+        line-height: 20px;
+        text-align: left;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin-top: 8px;
+    }
+
+
+    #m-naver {
+        position: relative;
+        display: inline-block;
+        position: relative;
+        margin-bottom: -15px;
+        padding: 21px 0 17px;
+        width: 384px;
+        height: 63px;
+        line-height: 25px;
+        text-align: left;
+    }
+
+    #m-naver a {
+        font-size: 14.7px;
+        vertical-align: top;
+    }
+
+    #m-naver::before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        margin: 2px 11px 0 3px;
+        background-image: url(image/favicon.png);
+        background-size: 433px 412px;
+        background-position: -363px -223px;
+        background-repeat: no-repeat;
+    }
+
+    #m-naver::after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 28px;
+        right: 4px;
+        background-image: url(image/favicon.png);
+        background-size: 433px 412px;
+        background-position: -425px -26px;
+        background-repeat: no-repeat;
+        width: 8px;
+        height: 12px;
+        line-height: 25px;
+    }
+
+    #main-whale {
+        position: relative;
+        padding: 8px 50px 8px 18px;
+    }
+
+    #main-whale a {
+        overflow: hidden;
+        display: flex;
+        width: 352px;
+        color: var(--color_caption1);
+        padding: 11px 0;
+        line-height: 20px;
+        align-items: center;
+    }
+
+    #main-whale img {
+        display: block;
+        margin-right: 12px;
+    }
+
+    #whale-content {
+        flex: 1;
+        display: inline-block;
+    }
+
+    #whale-content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--color_body);
+        font-size: 14.7px;
+        text-align: left;
+    }
+
+    #whale-content div:last-child {
+        color: var(--color_caption2);
+        margin-top: 2px;
+        line-height: 20px;
+    }
+
+    #whale .circle {
+        position: absolute;
+        top: 45%;
+        right: 18px;
+        height: 6px;
+        margin-top: -5px;
+    }
+
+    #whale .circle::after,
+    #whale .circle::before {
+        content: " ";
+        width: 6px;
+        height: 6px;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: rgba(128, 134, 140, .3);
+        color: rgba(0, 0, 0, 0);
+    }
+
+    #whale .circle::after {
+        margin-left: 4px;
+    }
+
+    #whale .circle::before {
+        background-color: #03c75a;
+    }
+
+    #footer,
+    #banner,
+    #notice,
+    #resource-service,
+    #company {
+        border-top: 1px solid var(--color_border_in_divider);
+        letter-spacing: -0.5px;
+    }
+
+    #footer-content {
+        width: 1280px;
+        margin: 0 auto;
+        padding-bottom: 78px;
+        font-size: 1.3rem;
+    }
+
+    #banner {
+        padding: 30px 0;
+        display: flex;
+        justify-content: flex-left;
+    }
+
+    #banner .banner-border {
+        display: flex;
+        width: 410px;
+        height: 100px;
+        border: 0pt none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f5f6f7;
+    }
+
+    #banner .banner-ad-box {
+        overflow: hidden;
+        position: relative;
+        width: 160px;
+        height: 100px;
+        border-radius: 6px;
+    }
+
+    #banner .banner2 {
+        margin-left: 22px;
+    }
+
+    #banner .banner3 {
+        margin-left: 18px;
+    }
+
+
+    #banner .banner-ad-box img {
+        display: block;
+        float: left;
+        width: 160px;
+        height: 100px;
+        background-size: 160px 100px;
+        background-repeat: no-repeat;
+        position: absolute;
+        aspect-ratio: auto 160 / 100;
+        transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+    }
+
+    #banner .banner-border:hover .banner-ad-box img {
+        transition: transform .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transform: scale(1.03);
+    }
+
+    #banner .ad-button2 {
+        display: block;
+        width: 25px;
+        height: 16px;
+        background-image: url(./ad-button.svg);
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        color: transparent;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        z-index: 1;
+    }
+
+    #banner .ad-button2::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: inherit;
+        content: " ";
+    }
+
+    #banner .banner-text-box {
+        float: right;
+        overflow: hidden;
+        width: 250px;
+        height: 100px;
+        padding: 5px 3px 0 18px;
+    }
+
+    #banner .banner-text-box .bold:nth-child(1) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+        align-items: center;
+        height: 20px;
+        max-width: 141px;
+        padding: 0 6px;
+        border-radius: 4px;
+        font-size: 13px;
+        line-height: 20px;
+        letter-spacing: -0.25px;
+        color: #fff;
+        background-color: #a0adb2;
+    }
+
+    #banner .banner-text-box .bold:nth-child(2) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.143;
+        color: #222122;
+    }
+
+    #banner .banner-text-box .text {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 14px;
+        line-height: 1.43;
+        color: #545454;
+        letter-spacing: -0.7px;
+    }
+
+    #banner .banner-border:hover {
+        text-decoration: none;
+    }
+
+    #banner .banner-border:hover .bold2 {
+        text-decoration: underline;
+    }
+
+    #banner .banner-text-box .text1 {
+        margin-top: 6px
+    }
+
+    #banner .title {
+        font-size: 13.65px;
+        color: #101010;
+        font-weight: bold;
+    }
+
+    #notice {
+        display: flex;
+        padding: 21px 0;
+        line-height: 17px;
+        justify-content: space-between;
+    }
+
+    #notice .notice-box {
+        height: 17px;
+        color: var(--color_caption1);
+    }
+
+    #notice .notice-box .title {
+        margin-right: 11px;
+    }
+
+    #notice .bold::after {
+        content: " ";
+        display: inline-block;
+        background-image: url(image/favicon.png);
+        background-size: 433px 412px;
+        background-position: -425px 0px;
+        background-repeat: no-repeat;
+        width: 8px;
+        height: 12px;
+        margin: 3px 0 0 10px;
+    }
+
+    #resource-service {
+        height: 90px;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    #resource {
+        width: 780px;
+        height: 90px;
+        overflow: hidden;
+        line-height: 20px;
+        padding: 20px 0;
+        letter-spacing: -0.4px;
+    }
+
+
+    #resource .bold {
+        width: 110px;
+        padding-right: 23px;
+        float: left;
+    }
+
+
+    #resource #resource div {
+        line-height: 20px;
+    }
+
+    #resource div:nth-child(2),
+    #resource div:nth-child(3) {
+        margin-top: 10px;
+    }
+
+
+
+    #service {
+        display: flex;
+        margin-left: 180px;
+        padding: 36px 0;
+        font-size: 1.3rem;
+    }
+
+    #service .service-border {
+        margin: -15px;
+        display: flex;
+    }
+
+    #service .service-border2 {
+        margin-left: 60px;
+    }
+
+    #service .service-border .bold,
+    #service .service-border .service-url {
+        display: block;
+        padding-top: 10px;
+    }
+
+    #service .service-whale,
+    #service .service-flower {
+        padding: 3px 0 0 4px;
+    }
+
+    #service .service-whale {
+        margin-left: 15px;
+        width: 48px;
+        height: 48px;
+    }
+
+    #service .service-flower {
+        margin: -1px 0 0 10px;
+        width: 47px;
+        height: 57px;
+    }
+
+    #company {
+        width: 1280px;
+        padding-top: 20px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    #company ul {
+        overflow: hidden;
+        display: inline-block;
+        margin-right: 23px;
+    }
+
+    #company li {
+        display: inline-flex;
+        align-items: center;
+        margin: 0 -2px;
+        list-style: none;
+        color: var(--color_caption1);
+    }
+
+    #company div {
+        display: inline-block;
+        font-weight: bold;
+        vertical-align: top;
+    }
+
+
+    #main-calendar {
+    height: 300px;
+    padding: 0 18px;
+    background-color: var(--color_board_bg);
+}
+
+#main-calendar header {
+    height: 52px;
+    line-height: 40px;
+    padding: 6px 0;
+    display: flex;
+}
+
+#main-calendar header>span {
+    margin-left: auto;
+    font-size: 1.3rem;
+}
+
+#main-calendar header>text {
+    color: var(--color_title);
+    display: inline-block;
+    padding-right: 7px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    vertical-align: top;
+}
+
+#main-calendar-content {
+    width: 400px;
+    height: 230px;
+    padding-top: 10px;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+
+#main-calendar-content iframe {
+    border: none; 
+}
+
+</style></head>
+
+
+
+<body>
+    <div id="wrap">
+        <header id="header">
+            <aside id="ad">
+                <a href="#" id="header-right-ad">
+                    <img src="image/q.png" alt="큐: 사전신청 오픈!" width="244px" height="108px">
+                </a>
+            </aside>
+            <button id="header-Hamburger" class="header-button">
+                <!--::before -->
+                <div></div>
+                <!--::after -->
+                <span class="blind">확장 영역</span>
+            </button>
+            <button id="header-pay" class="header-button">
+                <!--::before -->
+                <div></div>
+                <!--::after -->
+                <span class="blind">네이버페이</span>
+            </button>
+            <button id="header-navertalk" class="header-button">
+                <!--::before -->
+                <div></div>
+                <!--::after -->
+                <span class="blind">네이버톡</span>
+            </button>
+            <button id="header-notice" class="header-button">
+                <!--::before -->
+                <div></div>
+                <!--::after -->
+                <span class="blind">알림</span>
+            </button>
+            <button id="header-basket" class="header-button">
+                <!--::before -->
+                <div></div>
+                <!--::after -->
+                <span class="blind">장바구니</span>
+            </button>
+            <div id="search">
+                <form id="search-form" onsubmit="searchNaver(event)">
+                    <a id="search-svg" href="https://www.naver.com/">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path>
+                        </svg>
+                    </a>
+                    <label for="search-input" class="blind">검색어입력</label>
+                    <input id="search-input" type="text" placeholder="검색어를 입력해 주세요" onkeydown="checkEnter(event)"  autocomplete="off">
+                    <div id="search-right">
+                        <!--::before -->
+                        <button href="#" id="search-keyboard">
+                            <span class="blind">입력도구</span>
+                        </button>
+                        <!--::before -->
+                        <button href="#" id="search-resent">
+                            <span class="blind">자동완성/최근검색어펼치기</span>
+                        </button>
+                        <button href="#" button="" id="search-button">
+                            <!--::before -->
+                            <div><span class="blind">검색</span></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li>
+                        <a href="https://mail.naver.com/v2/folders/0/all">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span>메일</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://section.cafe.naver.com/">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span>카페</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://section.blog.naver.com/">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span>블로그</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://shopping.naver.com/">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span>쇼핑</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://news.naver.com/">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span>뉴스</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://finance.naver.com/">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span>증권</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://land.naver.com/">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <span>부동산</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://map.naver.com/p/">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span>지도</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span>웹툰</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://comic.naver.com/index">
+                            <!--::before -->
+                            <div class="icon"></div>
+                            <!--::after -->
+                            <span class="blind">더보기</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main id="main">
+    
+            <div id="main-middle">
+                <div id="main-left">
+                    <section id="main-newsstand" class="left-section">
+                        <div id="main-newsstand-top">
+                            <header>
+                                <a href="#" class="bold">뉴스스탠드</a>
+                                <a href="#" class="dot">언론사편집</a>
+                                <a href="#" class="slash">엔터</a>
+                                <a href="#" class="slash">스포츠
+                                    <!-- ::before -->
+                                
+                                </a>
+                                <a href="#" class="slash">경제</a>
+                            </header>
+                            <div id="main-newsstand-gray">
+                                <div class="left">
+                                    <a href="#">전체언론사</a>
+                                    <!--::after -->
+                                    <!--::before -->
+                                    <div id="main-newsstand-animation">
+                                        <a href="#">연합뉴스</a>
+                                        <!--::after -->
+                                        <a href="#">[날씨] 전국 대부분 눈... 아침 영하권 추위 '성큼 다가온 겨울'</a>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <a href="#">뉴스스탠드</a>
+                                    <a href="#" class="bold">뉴스홈</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="main-newsstand-grid">
+                            <div class="grid-box">
+                                <img src="./news/C.png" alt="Chosunbiz">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/A.png" alt="아시아경제">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/D.png" alt="데일리안">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/DO.png" alt="독서신문">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/E.png" alt="이데일리">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/F.png" alt="파이낸설뉴스">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/GU.png" alt="국방일보">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/H.png" alt="헤럴드경제">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/IR.png" alt="일요신문">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/J.png" alt="JTBC">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/K.png" alt="KBS">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/M.png" alt="매일경제">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/MT.png" alt="머니투데이">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/N.png" alt="노컷뉴스">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/O.png" alt="OSEN">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/S-K.png" alt="spotalkorea">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/S.png" alt="스포츠서울">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/SI.png" alt="시사IN">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/T.png" alt="The JoongAng">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/TO.png" alt="뉴스토마토">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/V.png" alt="VERITAS">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/W.png" alt="WOMAN DOONGA">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/YA.png" alt="약사공론">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                            <div class="grid-box">
+                                <img src="./news/YT.png" alt="YTN">
+                                <div class="hover-box">
+                                    <a href="#this">구독</a>
+                                    <!--::before -->
+                                    <a href="#this" class="pipe">기사보기</a>
+                                </div>
+                            </div>
+                        </div>
+                        <footer>
+                            <!--::before -->
+                            <button class="prev way"><span class="blind">이전 페이지</span></button>
+                            <span class="text news">언론사
+                                <span class="first">더보기 1</span><span class="last">/4</span>
+                            </span>
+                            <!--::before -->
+                            <button class="next way"><span class="blind">다음 페이지</span></button>
+                            <!--::before -->
+                            <button class="list-button"><span class="blind">목록보기</span></button>
+                            <!--::before -->
+                            <button class="grid-button"><span class="blind">격자보기</span></button>
+                        </footer>
+                    </section>
+                    <section id="main-shopping" class="left-section">
+                        <div id="main-shopping-top">
+                            <header>
+                                <a href="#" class="bold">쇼핑</a>
+                                <a href="#" class="slash">맨즈</a>
+                                <a href="#" class="slash">원쁠딜</a>
+                                <a href="#" class="slash">쇼핑라이브</a>
+                            </header>
+                            <div id="main-shopping-gray">
+                                <div class="left">
+                                    <span class="today">오늘의 혜택</span>
+                                    <img src="./pas_main.png" alt="패션플러스" class="pas">
+                                    <a href="#">11/21~11/23 블랙패플데이! <span> 최대 12만원 쿠폰혜택,</span> 타임특가까지</a>
+                                    <!--::after -->
+                                </div>
+                                <div class="page">
+                                    <span class="first">1</span>
+                                    <span class="last">/18</span>
+                                    <!--::before -->
+                                    <button class="prev"><span class="blind">이전페이지</span></button>
+                                    <!--::before -->
+                                    <button class="next"><span class="blind">다음페이지</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="main-shopping-grid">
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/cute.jpg" alt="귀여워서~심쿵~ 신상 9,800원">
+                                </div>
+                                <div class="text">귀여워서~심쿵~</div>
+                                <div class="text">신상 9,800원</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/ring.jpg" alt="곧 크리스마스~ 연말특가 38%↓">
+                                </div>
+                                <div class="text">곧 크리스마스~</div>
+                                <div class="text">연말특가 38%↓</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div>
+                                    <img src="./shopping/shoes.jpg" alt="포근하고 따뜻해 단하루 1만원대!">
+                                </div>
+                                <div class="text">포근하고 따뜻해</div>
+                                <div class="text">단하루 1만원대!</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/kid.jpg" alt="면100% 유아 내의 SET">
+                                </div>
+                                <div class="text">면100%유아내의</div>
+                                <div class="text">유아 내의 SET</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/neat.jpg" alt="X-mas 니트! 연말룩 BEST~">
+                                </div>
+                                <div class="text">X-mas 니트!</div>
+                                <div class="text">연말룩 BEST~</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/tree.jpg" alt="국민트리 풀세트 SALE 특가 27%">
+                                </div>
+                                <div class="text">국민트리 풀세트</div>
+                                <div class="text">SALE 특가 27%</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/deco.jpg" alt="크리스마스 BEST 테이블 데코세트">
+                                </div>
+                                <div class="text">크리스마스 BEST</div>
+                                <div class="text">테이블 데코세트</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/14k.jpg" alt="크리스마스 선물 최대70%↓ 특가">
+                                </div>
+                                <div class="text">크리스마스 선물</div>
+                                <div class="text">최대70%↓ 특가</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/padding.jpg" alt="만든사람 천재야 푹신 패딩케이스">
+                                </div>
+                                <div class="text">만든사람 천재야</div>
+                                <div class="text">푹신 패딩케이스</div>
+                            </a>
+                            <a href="#" class="item">
+                                <div class="img-board">
+                                    <img src="./shopping/case.jpg" alt="귀여운게 최고야 X-MAS기분내기">
+                                </div>
+                                <div class="text">귀여운게 최고야</div>
+                                <div class="text">X-MAS기분내기</div>
+                            </a>
+                            <div class="item">
+                                <div class="item-block">
+                                    <span class="blind">쇼핑몰 바로가기&gt;</span>
+                                    <div class="shopping-name">
+                                        <a href="#" class="bold">쿠팡</a>
+                                        <span class="dot"></span>
+                                        <a href="#">G마켓</a>
+                                        <span class="dot"></span>
+                                        <a href="#">옥션 </a>
+                                        <span class="dot"></span>
+                                        <a href="#">11번가</a>
+                                    </div>
+                                    <div class="shopping-name">
+                                        <a href="#">SSG닷컴</a>
+                                        <span class="dot"></span>
+                                        <a href="#" class="bold">올리브영</a>
+                                        <span class="dot"></span>
+                                        <a href="#">위메프</a>
+                                        <span class="dot"></span>
+                                        <a href="#">GS샵</a>
+                                    </div>
+                                    <div class="shopping-name">
+                                        <a href="#">CJ온스타일</a>
+                                        <span class="dot"></span>
+                                        <a href="#" class="bold">패션플러스</a>
+                                        <span class="dot"></span>
+                                        <a href="#">하프클럽</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <ul>
+                                    <li>
+                                        <a href="#this">
+                                            <!--before-->
+                                            <div class="item-border"></div>
+                                            <div class="item-text">쇼핑홈</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#this">
+                                            <!--before-->
+                                            <div class="item-border"></div>
+                                            <div class="item-text">리뷰적립</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#this">
+                                            <!--before-->
+                                            <div class="item-border"></div>
+                                            <div class="item-text">주문</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#this">
+                                            <!--before-->
+                                            <div class="item-border"></div>
+                                            <div class="item-text">장바구니</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="item">
+                                <div class="item-block"><img src="image/celltrion.jpg" alt="셀트리온뷰티몰 선착순특가 종료임박"></div>
+                                <span>셀트리온뷰티몰 선착순특가 종료임박</span>
+                            </div>
+                        </div>
+                        <footer>
+                            <button class="prev way"><span class="blind">이전 페이지</span></button>
+                            <div class="text">
+                                <span class="hot">쇼핑아이템</span>
+                                <span class="first">더보기 1</span><span class="last">/13</span>
+                            </div>
+                            <button class="next way"><span class="blind">다음 페이지</span></button>
+                            <span class="footer-ad">AD</span>
+                        </footer>
+                    </section>
+                </div>
+                <div id="main-right">
+                    
+                    <section id="main-login">
+                        <div class="text">네이버를 더 안전하고 편리하게 이용하세요</div>
+                        <a href="login.html" id="main-login-button"><!--
+                          --><i></i><!--
+                          --><span>로그인</span>
+                        </a>
+                        <div>
+                            <a href="#">아이디 찾기</a>
+                            <!--::before -->
+                            <a href="#" class="pipe">비밀번호 찾기</a>
+                            <!--::before -->
+                            <a href="#" class="pipe">회원가입</a>
+                        </div>
+                    </section>
+
+                    
+                    
+                    
+                    <section id="main-calendar" class="main-calendar">
+                        <header>
+                            <text><a href="#">캘린더</a></text>
+                        </header>
+                        <div id="main-calendar-content">
+                                <iframe src="calendar.html" title="달력" width="100%" height="100%"></iframe>
+                        </div>
+                    </section>
+                    
+                    
+
+                    <section id="main-weather" class="main-weather-and-stock">
+                        <header>
+                            <text><a href="#">날씨</a></text>
+                            <button><a href="#">예보 비교</a></button>
+                            <span>서울시 남가좌동</span>
+                        </header>
+                        <div id="main-weather-content">
+                            <div id="main-weather-left">
+                                <a href="#">
+                                    <div class="sketch-border">
+                                        <div class="sketch"></div>
+                                        <div class="sketch-right">-1.2°
+                                            <div class="sketch-right-bottom">흐림</div>
+                                        </div>
+                                    </div>
+                                    <div class="sketch-base">
+                                        <span>-2°<span class="blind">최저기온</span>
+                                            <!-- before -->
+                                            <span class="slash">3°<span class="blind">최고기온</span></span>
+                                        </span>
+                                    </div>
+                                </a>
+                                <a href="#" class="dust">
+                                    <span class="pollution">미세<span>좋음</span></span>
+                                    <!-- before -->
+                                    <span class="dot ultra-pollution">초미세<span>좋음</span></span>
+                                </a>
+                            </div>
+                            <div id="main-weather-right">
+                                <img src="image/wether-graph.JPG" alt="19시:-1°, 21시:-2°, 23시:-3°,01시:-4°, 03시:-5°">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="main-stock" class="main-weather-and-stock">
+                        <header>
+                            <text><a href="#">증시</a></text>
+                            <span>11.27. 17:44</span>
+                            <!-- before -->
+                            <button><span class="blind">새로고침</span></button>
+                        </header>
+                        <div id="main-stock-content">
+                            <div id="main-stock-left">
+                                <a href="#">
+                                    <div class="USD">환율 USD</div>
+                                    <div class="rate">1,302.00</div>
+                                    <div class="up">▲1.00<span>+0.08%</span></div>
+                                    <div>
+                                        <img src="image/stock.png" alt="환율 3개월 차트" class="chart">
+                                        <span class="three">3개월차트</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div id="main-stock-right">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="stock-block">
+                                            <span class="stock-item">에코프로비엠</span>
+                                            <span class="price up">
+                                                <span class="blind">상승</span>
+                                                <i></i>280,000
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#" class="stock-block">
+                                            <span class="stock-item">앤에이치스팩30호</span>
+                                            <span class="price up">
+                                                <span class="blind">상승</span>
+                                                <i></i>2,475
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#" class="stock-block">
+                                            <span class="stock-item">두산로보틱스</span>
+                                            <span class="price down">
+                                                <span class="blind">하락</span>
+                                                <i></i>88,800
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <!-- after -->
+                                            <span class="stock-item arrow">인기종목 더보기</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                
+                    
+                    <section id="main-whale">
+                        <a href="#">
+                            <img src="image/whale.png" alt="웨일브라우저" width="42" height="42">
+                            <div id="whale-content">
+                                <strong>나만의 스마트한 브라우저 웨일</strong>
+                                <div>인터넷을 여는 가장 스마트한 방법</div>
+                            </div>
+                            <!-- ::before -->
+                            <div class="circle"></div>
+                            <!-- ::after -->
+                        </a>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <footer id="footer">
+            <div id="footer-content">
+                <span class="blind">네이버 푸터</span>
+                <section id="banner">
+                    <a href="#" class="banner-border banner1">
+                        <div class="banner-ad-box">
+                            <img src="image/footer-ad-1.jpg" alt="초록우산 기부반지 받기">
+                            
+                            <!-- ::after -->
+                        </div>
+                        <div class="banner-text-box">
+                            <span class="bold">초록우산</span>
+                            <span class="bold bold2">제이에스티나 해피니스링</span>
+                            <span class="text text1">월 1만원 후원하고</span>
+                            <span class="text">기부반지 받기</span>
+                        </div>
+                    </a>
+                    <a href="#" class="banner-border banner2">
+                        <div class="banner-ad-box">
+                            <img src="image/footer-ad-2.jpg" alt="해피빈 굿액션">
+                        </div>
+                        <div class="banner-text-box">
+                            <span class="bold">네이버 해피빈 굿액션</span>
+                            <span class="bold bold2">대지진 그 후, 궁금하셨죠?</span>
+                            <span class="text text1">튀르키예·시리아 소식 듣고</span>
+                            <span class="text">기부특콩대 톡톡 알림 혜택까지</span>
+                        </div>
+                    </a>
+                    <a href="#" class="banner-border banner3">
+                        <div class="banner-ad-box">
+                            <img src="image/footer-ad-3.png" alt="블록코딩 창작 공간">
+                        </div>
+                        <div class="banner-text-box">
+                            <span class="bold">네이버 커넥트재단</span>
+                            <span class="bold bold2">엔트리 탐험하기</span>
+                            <span class="text text1">블록 코딩으로 커뮤니케이션하는</span>
+                            <span class="text">10대들의 새로운 창작 공간</span>
+                        </div>
+                    </a>
+                </section>
+                <section id="notice">
+                    <div class="notice-box">
+                        <a href="#" class="title"><strong>공지사항</strong></a>
+                        <a href="#">네이버 ‘개인정보 처리방침’ 변경에 대한 안내 말씀드립니다.</a>
+                    </div>
+                    <a href="#" class="bold">서비스 전체보기</a>
+                    <!-- ::after -->
+                </section>
+                <section id="resource-service">
+                    <div id="resource">
+                        <div>
+                            <span class="bold">Partners</span>
+                            <a href="#">SME 풀케어 시스템</a>
+                            <a href="#" class="pipe">비즈니스 · 광고</a>
+                            <a href="#" class="pipe">스토어 개설</a>
+                            <a href="#" class="pipe">지역업체 등록</a>
+                            <a href="#" class="pipe">엑스퍼트 등록</a>
+                        </div>
+                        <div>
+                            <span class="bold">Developers</span>
+                            <a href="#">네이버 개발자 센터</a>
+                            <a href="#" class="pipe">오픈 API</a>
+                            <a href="#" class="pipe">오픈소스</a>
+                            <a href="#" class="pipe">네이버 D2</a>
+                            <a href="#" class="pipe">네이버 D2SF</a>
+                            <a href="#" class="pipe">네이버 랩스</a>
+                        </div>
+                    </div>
+                    <div id="service">
+                        <div class="service-border service-border1">
+                            <div>
+                                <span class="bold">웨일 브라우저</span>
+                                <a href="#" class="service-url">이용안내</a>
+                            </div>
+                            <a href="#" class="service-whale">
+                                <img src="image/whale2.png" alt="웨일 브라우저" width="48px" height="48px"> </a>
+                        </div>
+                        <div class="service-border service-border2">
+                            <div>
+                                <span class=" bold">기업 사이트</span>
+                                <a href="#" class="service-url">바로가기</a>
+                            </div>
+                            <a href="#" class="service-flower">
+                                <img src="image/n.png" alt="기업 사이트" width="47px" height="50px">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <section id="company">
+                    <span class="blind"></span>
+                    <ul>
+                        <li>
+                            <a href="#this">회사소개</a>
+                        </li>
+                        <li class="pipe">
+                            <a href="#this">인재채용</a>
+                        </li>
+                        <li class="pipe">
+                            <a href="#this">제휴제안</a>
+                        </li>
+                        <li class="pipe">
+                            <a href="#this">이용약관</a>
+                        </li>
+                        <li class="pipe bold">
+                            <a href="#this">개인정보처리방침</a>
+                        </li>
+                        <li class="pipe">
+                            <a href="#this">청소년보호정책</a>
+                        </li>
+                        <li class="pipe">
+                            <a href="#this">네이버 정책</a>
+                        </li>
+                        <li class="pipe">
+                            <a href="#this">고객센터</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <a href="#">ⓒ NAVER Corp.</a>
+                    </div>
+                </section>
+            </div>
+        </footer>
+    </div>
+    <script>
+        // 페이지 로드 시 로그인 상태 확인
+        window.onload = function() {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                // 로그인 상태일 경우 main-login 섹션 변경
+                const mainLoginSection = document.getElementById('main-login');
+                mainLoginSection.innerHTML = `
+                    <div class="text">회원님 환영합니다!</div>
+                    <a href="#" id="main-login-button"><i></i><span>로그아웃</span></a>
+                    <div>
+                        <a href="#">회원 정보 수정</a>
+                        <span class="pipe"></span>
+                        <a href="#">회원 탈퇴</a>
+                    </div>
+                `;
+    
+                // 로그아웃 버튼 클릭 시 처리
+                const logoutButton = document.getElementById('main-login-button');
+                logoutButton.addEventListener('click', function() {
+                    localStorage.removeItem('loggedIn'); // 로그인 상태 삭제
+                    window.location.reload(); // 페이지 새로고침
+                });
+            }
+        }
+
+        function checkEnter(event) {
+            if (event.key === "Enter") { // 엔터 키를 눌렀을 때
+                searchNaver(); // 검색 함수 호출
+            }
+        }
+
+        function searchNaver(event) {
+            event.preventDefault();  // 폼 제출 기본 동작을 막음
+            var query = document.getElementById('search-input').value;
+            if (query !== "") {
+                var naverSearchUrl = "https://search.naver.com/search.naver?query=" + encodeURIComponent(query);
+                window.location.href = naverSearchUrl;  
+            }
+        }
+
+        function getCurrentDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            const koreaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+
+            const formattedDate = koreaTime.toLocaleDateString('ko-KR', options);
+            return formattedDate;
+        }
+
+        document.getElementById('current-date').innerText = getCurrentDate();
+    </script>
+
+</body></html>

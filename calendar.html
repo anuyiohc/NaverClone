@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현재 날짜 강조 달력</title>
+    <style>
+        body {
+            display: flex;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 0px;
+
+        }
+        
+        .calendar {
+            display: flex;
+            border: 1px solid #e2e2e2;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 10px 15px 0 0;
+            width: 350px;
+            height: auto;
+            font-size: 0.7rem; 
+            
+        }
+
+        .calendar-s {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .calendar-header {
+            font-size: 1.1rem; 
+            font-weight: bold;
+            padding: 8px;
+            width: 160px; 
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: 4px; 
+            width: 180px; 
+            height: 180px; 
+            background-color: #ffffff;
+        }
+
+        .calendar-day {
+            width: 20px; 
+            height: 20px;
+            line-height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            background-color: #ffffff;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+
+        .calendar-day:hover {
+            background-color: #bfe6f1;
+        }
+
+        .calendar-day.selected {
+            background-color: #4e8db1;
+            color: white;
+        }
+
+        .calendar-day.today {
+            background-color: #ff6f61;
+            color: white;
+            font-weight: bold;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <div class="calendar">
+        <div class="calendar-s">
+        <div class="calendar-header" id="calendar-header"><br>2024년 12월</div>
+        <div class="calendar-grid" id="calendar-grid">
+        </div>
+    </div>
+
+
+
+
+    <script>
+        const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+
+        function generateCalendar(year, month) {
+            const firstDay = new Date(year, month, 1).getDay(); // 첫 번째 날 요일
+            const lastDate = new Date(year, month + 1, 0).getDate(); // 해당 월의 마지막 날짜
+
+            const calendarGrid = document.getElementById('calendar-grid');
+            calendarGrid.innerHTML = ''; // 이전 달력 지우기
+
+            // 요일 헤더 추가
+            daysOfWeek.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.innerText = day;
+                calendarGrid.appendChild(dayElement);
+            });
+
+            // 빈 공간 추가 (첫 번째 날 전까지)
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                calendarGrid.appendChild(emptyDay);
+            }
+
+            // 날짜 추가
+            const today = new Date();
+            for (let date = 1; date <= lastDate; date++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('calendar-day');
+                dayElement.innerText = date;
+
+                // 오늘 날짜 강조
+                if (date === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    dayElement.classList.add('today');
+                }
+
+                dayElement.onclick = function () {
+                    dayElement.classList.toggle('selected');
+                };
+                calendarGrid.appendChild(dayElement);
+            }
+        }
+
+        // 현재 날짜로 달력 생성
+        const today = new Date();
+        generateCalendar(today.getFullYear(), today.getMonth());
+    </script>
+</body>
+</html>
